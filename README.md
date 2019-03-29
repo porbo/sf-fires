@@ -1,5 +1,8 @@
 # sf-fires
 
+Building permit application evaluation:
+Will this modification increase fire risk?
+
 San Francisco Fire Predictions
 Description:
 Predict fire incidents using information about buildings, from permit applications, with the goal of finding relationships between certain types of applications and fires. Alternatively, simply predict areas in the city more prone to fire. 
