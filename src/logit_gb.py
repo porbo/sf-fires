@@ -43,10 +43,11 @@ class LogitGB:
         else:
             self.y = (target['fire_rate_after'] < target['fire_rate_before']).astype(int).values
 
-        self.X = text_mat
+        self.X_text = text_mat
+        self.pred = numerical_df
 
-        self.m1.fit(self.X, self.y)
-        self.X_final = np.concatenate((numerical_df[self.columns].fillna(0).values, self.m1.predict_proba(self.X)[:,1].reshape(-1,1)),axis = 1)
+        self.m1.fit(self.X_text, self.y)
+        self.X_final = np.concatenate((numerical_df[self.columns].fillna(0).values, self.m1.predict_proba(self.X_text)[:,1].reshape(-1,1)),axis = 1)
 
         self.m2.fit(self.X_final, self.y)
 
@@ -69,7 +70,7 @@ class LogitGB:
         for i in range(1000):
             old = self.threshold
             self.threshold = i/1000
-            f = f1_score(self.y, self.predict(self.X_final))
+            f = f1_score(self.y, self.predict(self.pred, self.X_text))
             if f <= current_best:
                 self.threshold = old
             else:
@@ -85,10 +86,10 @@ class LogitGB:
         1d array
         """
         X_num = pred[self.columns].values
-        X = np.concatenate((X_num, self.m1.predict_proba(X_text)[:,1]),axis = 1)
+        X = np.concatenate((X_num, self.m1.predict_proba(X_text)[:,1].reshape(-1,1)),axis = 1)
         return self.m2.predict_proba(X)[:,1]
 
     def predict(self, pred, X_text):
         """
         """
-        return (self.predict_proba(X_test) > self.threshold).astype(int)
+        return (self.predict_proba(pred, X_text) > self.threshold).astype(int)
