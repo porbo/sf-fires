@@ -38,7 +38,7 @@ if __name__ == '__main__':
     #         a += p2 - p1
     #         b += p3 - p2
     #         c += last - p3
-        except:h
+        except:
             print(i)
             print(sys.exc_info())
             break
