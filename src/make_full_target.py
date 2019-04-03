@@ -13,6 +13,7 @@ if __name__ == '__main__':
 
     fires = np.zeros((len(target_matching), 2))
 
+    time1 = time.clock()
     for i, row in target_matching.iterrows():
         if i%10000 == 0:
             print('done with {} iterations'.format(i))
