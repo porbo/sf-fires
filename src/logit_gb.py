@@ -14,6 +14,15 @@ class LogitGB:
         current columns: existing_stories, has_existing_stories
 
     This attempts to quickly capture information from many quickly (like tfidf of text), while combining that with other, non-text features
+
+    Attributes:
+    m1:         the logistic regression model used to make a prediction from text
+    m2:         the gradient boosting model that combines the prediction from m1 with other features
+    vec:        tfidf vectorizer
+    threshold:  prediction threshold
+    columns:    the columns from numerical_df that will be added to text predictions when using m2
+    X_final:    the numpy array that gets tossed into m2
+
     """
     def __init__(self):
         """
@@ -91,5 +100,8 @@ class LogitGB:
 
     def predict(self, pred, X_text):
         """
+        input:
+            pred:   dataframe of building permits to predict for
+            X_text: array of tfidf of text
         """
         return (self.predict_proba(pred, X_text) > self.threshold).astype(int)
