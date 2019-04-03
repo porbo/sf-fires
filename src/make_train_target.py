@@ -8,12 +8,13 @@ if __name__ == '__main__':
     with open('train/target_date_index.p', 'rb') as file:
         target_date_index = pickle.load(file)
     with open('train/target_matching_train.p', 'rb') as file:
-        target_matching = pickle.load(file)
+        target_matching = pickle.load(file).reset_index()
     with open('train/fires_df_train.p', 'rb') as file:
         fires_df = pickle.load(file)
 
     fires = np.zeros((len(target_matching), 2))
-
+    
+    start_date = pd.to_datetime('2003-01-01')
     time1 = time.clock()
     for i, row in target_matching.iterrows():
 

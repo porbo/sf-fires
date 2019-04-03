@@ -13,7 +13,8 @@ if __name__ == '__main__':
         fires_df = pickle.load(file)
 
     fires = np.zeros((len(target_matching), 2))
-
+   
+    start_date = pd.to_datetime('2003-01-01')
     time1 = time.clock()
     for i, row in target_matching.iterrows():
         if i%10000 == 0:
