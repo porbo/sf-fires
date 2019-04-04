@@ -67,3 +67,9 @@ https://sfdbi.org/building-permits-filed-and-issued
 Code to download the building permit filings is at https://github.com/porbo/sf-fires/src/download_data.py
 
 US Census Bureau api for geocoding: https://www.census.gov/geo/maps-data/data/geocoder.html
+
+citing sklearn
+https://scikit-learn.org/stable/about.html#citing-scikit-learn
+
+citing nltk
+https://groups.google.com/forum/#!topic/nltk-users/CS2fCFxvu1I
