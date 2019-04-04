@@ -24,7 +24,7 @@ class LogitGB:
     X_final:    the numpy array that gets tossed into m2
 
     """
-    def __init__(self):
+    def __init__(self, columns = ['existing_stories', 'has_existing_stories']):
         """
         Don't need to pass anything in.
         """
@@ -32,7 +32,7 @@ class LogitGB:
         self.m2 = GradientBoostingClassifier(learning_rate = .13, loss = 'deviance', n_estimators = 500, min_samples_leaf = 4, max_depth = 3)
         self.vec = TfidfVectorizer()
         self.threshold = .5
-        self.columns = ['existing_stories', 'has_existing_stories']
+        self.columns = columns
 
     def fit(self, text_mat, numerical_df, target, increase = True):
         """
@@ -40,7 +40,7 @@ class LogitGB:
         Also picks an optimal threshold based on training data
 
         input:
-            text_df:array of text, lemmatized and with numbers stripped.
+            text_mat:array of text, vectorized with tfidf
             numerical_data:dataframe of non-text features
                 In this version, it uses existing_stories and has_existing_stories
             target:dataframe of fire rates before and after each permit
