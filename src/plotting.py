@@ -1,3 +1,5 @@
+
+
 def coloring(number):
     if number > .7:
         return 'r'
@@ -9,7 +11,10 @@ f = np.vectorize(coloring)
 
 def plot_predictions(pred):
     """
-    plot predictions of fire risk, vs. the whether or not a fire actually happened.
+    plot predictions of fire risk, color coded and placed where the actual building is.
+    Also plot actual buildings where fires happened.
+
+    Save results to results/pred_actual.png
     """
     f = np.vectorize(coloring)
 
@@ -33,4 +38,4 @@ def plot_predictions(pred):
     axs[1].set_ylabel('latitude')
     axs[1].scatter(x_axis[mask][sample_idx], y_axis[mask][sample_idx], c = f(y[mask][sample_idx]), alpha = .5, s = 20)
 
-    fig.show()
+    fig.savefig('')
