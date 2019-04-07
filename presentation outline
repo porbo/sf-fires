@@ -1,0 +1,33 @@
+- What problem are you solving? What question are you answering?
+    Fire bad. predict likelihood of fires?
+
+We might not always get the best predictors - however, building modification permits contain proxies for a lot of relevant information.
+Can also predict whether a building's fires per year will increase.
+
+
+- What data do you have? What does it look like?
+    Record of building permits since 2004
+    Record of fires since 2003
+
+- How did you go about solving your problem? What choices did you make?
+    Predict increasing fire rates? or just whether or not there's a fire?
+    Vectorized descriptions of
+
+- What were your results? How did you evaluate whether your answers were good or bad? Relative to what baseline.
+    ROC-AUC
+
+
+
+Deliverables/presentation points:
+
+WHY?
+    Fire bad. Let's get better at predicting and understanding fire.
+    I used building modification permit data to predict. Building modification permit applications include a lot of data about a building. It can indicate what type of building it is, the size and rough population density, and the types of modifications can potentially indicate the age of a building.
+
+    In particular, the age of a building generally isn't readily available.
+
+RESULTS:
+    ROC AUC SCORE:
+    Plot of predictions vs. true
+
+PRODUCT:

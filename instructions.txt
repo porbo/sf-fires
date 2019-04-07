@@ -1,0 +1,11 @@
+Notes:
+
+Run get_data.py to download and process data.
+
+If needed, add the argument loc to geocode the addresses of permits, and add the argument maketarget to construct arrays of counts of fires before and after each permit was issued.
+This takes a long time and the results should already be in the repository.
+
+Ex:
+```
+python get_data.py loc maketarget
+```

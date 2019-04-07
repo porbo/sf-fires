@@ -2,9 +2,7 @@ import time
 import requests
 import pickle
 
-if __name__ == '__main__':
-    with open('addresses.p', 'rb') as file:
-        addresses = pickle.load(file)
+get_locations(addresses):
     start_time = time.clock()
     locations = {}
     for i, address in enumerate(addresses):
@@ -15,7 +13,8 @@ if __name__ == '__main__':
             print(i, address)
             locations[address] = (None, None)
         if i % 500 == 0:
-            print(i, time.clock() - start_time)
+            print('Locations retrieved:', i, '  Elapsed time: ', time.clock() - start_time)
 
-    with open('locations.p', 'wb') as file:
+
+    with open('data/locations.p', 'wb') as file:
         pickle.dump(locations, file)

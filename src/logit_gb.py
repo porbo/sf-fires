@@ -34,7 +34,7 @@ class LogitGB:
         self.threshold = .5
         self.columns = columns
 
-    def fit(self, text_mat, numerical_df, target, increase = True):
+    def fit(self, text_mat, numerical_df, target, increase = True, any = False):
         """
         cleans up pred and target, and fits model to them.
         Also picks an optimal threshold based on training data
@@ -51,6 +51,9 @@ class LogitGB:
             self.y = (target['fire_rate_after'] > target['fire_rate_before']).astype(int).values
         else:
             self.y = (target['fire_rate_after'] < target['fire_rate_before']).astype(int).values
+
+        if any:
+            self.y = (target['fire_rate_after'] > 0).astype(int).values
 
         self.X_text = text_mat
         self.pred = numerical_df

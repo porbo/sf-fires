@@ -4,17 +4,16 @@ import pandas as pd
 import numpy as np
 import sys
 
-if __name__ == '__main__':
-    with open('train/target_date_index.p', 'rb') as file:
+def training_target(target_matching, fires_df):
+    with open('util/target_date_index.p', 'rb') as file:
         target_date_index = pickle.load(file)
-    with open('train/target_matching_before2015.p', 'rb') as file:
-        target_matching = pickle.load(file).reset_index()
-    with open('train/fires_df_before2015.p', 'rb') as file:
-        fires_df = pickle.load(file)
+    # with open('data/predictor_train.p', 'rb') as file:
+    #     target_matching = pickle.load(file)
+    # with open('train/fires_df_train.p', 'rb') as file:
+    #     fires_df = pickle.load(file)
 
     fires = np.zeros((len(target_matching), 2))
-    
-    start_date = pd.to_datetime('2003-01-01')
+
     time1 = time.clock()
     for i, row in target_matching.iterrows():
 
@@ -48,5 +47,7 @@ if __name__ == '__main__':
             print(sys.exc_info())
             break
 
-    with open('train/fires_before2015.p', 'wb') as file:
+    with open('data/fires_train.p', 'wb') as file:
         pickle.dump(fires, file)
+
+    return fires
