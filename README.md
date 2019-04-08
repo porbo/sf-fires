@@ -8,7 +8,7 @@ Let's see if we can predict it.
 ## Data
 Theory: we can learn a lot about a city by looking at how it has changed - namely, by looking at the building modification permits that have been issued.
 
-
+Much of the information in these permits can be found in the descriptions. Most machine learning algorithms 
 
 ## Findings
 Constructed model: 
@@ -44,7 +44,9 @@ Using NMF, we can get representative words for any number of automatically creat
 |5       | work, final, inspection, obtain, approved, complete, under, all       | .1146
 |6       | food, beverage, hndling, retail, sale, fire, sign, system, new        | .2175
 
-Interestingly, the fire risk can vary quite a bit between topics. 
+In this table, the fire risk is the proportion of permits classified under a given topic where a fire happened at that address after the permit was issued.
+
+The lowest fire risks were in topics 1 and 2. Based on the representative words, these are permits for homes for single families. Compared to other topics, these buildings likely have far fewer people, and thus fewer chances for someone to make a mistake.
 
 ## Future
 Early data exploration indicated that the height of a building was quite helpful in predicting fire risk. Unfortunately, this was not available in my training data from before 2015. If this project were to be repeated in the future, better predictions could be attained using that data.
