@@ -2,6 +2,7 @@
 
 # Summary
 Fires are scary! 
+
 Let's see if we can predict it.
 
 # Data
@@ -11,7 +12,9 @@ Theory: we can learn a lot about a city by looking at how it has changed - namel
 
 # Findings
 Constructed model: 
+
 ROC AUC: 0.796
+
 This can be interpreted as "the chance a random positive case has a higher fire risk rating than a random negative case"
 
 
