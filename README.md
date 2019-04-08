@@ -109,22 +109,23 @@ The lowest fire risks were in topics 1 and 2. Based on the representative words,
 ## Future
 Early data exploration indicated that the height of a building was quite helpful in predicting fire risk. Unfortunately, this was not available in my training data from before 2015. If this project were to be repeated in the future, better predictions could be attained using that data.
 
+## Obstacles
+Over the course of the project, I ran into many obstacles. This space 
 
-Target: Fire incidents in San Francisco
-https://data.sfgov.org/Public-Safety/Fire-Incidents/wr8u-xric
-    Predictors: Building permit filings
-https://sfdbi.org/building-permits-filed-and-issued
+## Sources
+### Data
+Fire Incidents: https://data.sfgov.org/Public-Safety/Fire-Incidents/wr8u-xric
+Building permit filings: https://sfdbi.org/building-permits-filed-and-issued
 
-Code to download the building permit filings is at https://github.com/porbo/sf-fires/src/download_data.py
-
+### Tools
 US Census Bureau api for geocoding: https://www.census.gov/geo/maps-data/data/geocoder.html
 
-citing sklearn
-https://scikit-learn.org/stable/about.html#citing-scikit-learn
+[Scikit-learn: Machine Learning in Python](http://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html), Pedregosa et al., JMLR 12, pp. 2825-2830, 2011.
 
-citing nltk
-https://groups.google.com/forum/#!topic/nltk-users/CS2fCFxvu1I
+NLTK: Bird, Steven, Ewan Klein, and Edward Loper (2009), Natural Language
+Processing with Python, O'Reilly Media.
 
-https://help.plot.ly/citations/
+Author: Plotly Technologies Inc. Title: Collaborative data science Publisher: Plotly Technologies Inc. Place of publication: Montréal, QC Date of publication: 2015 URL: https://plot.ly
 
+### Information
 https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc
