@@ -1,4 +1,22 @@
-# sf-fires
+# San Francisco Fire Risk
+
+# Summary
+Fires are scary! 
+Let's see if we can predict it.
+
+# Data
+Theory: we can learn a lot about a city by looking at how it has changed - namely, by looking at the building modification permits that have been issued.
+
+
+
+# Findings
+Constructed model: 
+ROC AUC: 0.796
+This can be interpreted as "the chance a random positive case has a higher fire risk rating than a random negative case"
+
+
+# Future
+Early data exploration indicated that the height of a building was quite helpful in predicting fire risk. Unfortunately, this was not available in my training data from before 2015. If this project were to be repeated in the future, better predictions could be attained using that data.
 
 Building permit application evaluation:
 Will this modification increase fire risk?
