@@ -109,8 +109,27 @@ The lowest fire risks were in topics 1 and 2. Based on the representative words,
 ## Future
 Early data exploration indicated that the height of a building was quite helpful in predicting fire risk. Unfortunately, this was not available in my training data from before 2015. If this project were to be repeated in the future, better predictions could be attained using that data.
 
-## Obstacles
-Over the course of the project, I ran into many obstacles. This space 
+## Obstacles and lessons
+Over the course of the project, I ran into many obstacles. This space will chronicle some of them.
+
+### Data
+The building permit data came as monthly data. In order to combine them, I needed to fix column names, since different months used different names for the sample column (e.g. existingstories vs. existing_stories vs. existing stories). To solve this, I looked at all the unique column names, picked one name for each column, and mapped the names in monthly data accordingly before merging.
+
+Also, all the data in March 2004 was shifted one column over from the names. This took a while to diagnose.
+
+The data on fire incidents had an issue in that it included everything the fire department did, including non-fire incidents. Thankfully, the fire departments includes well-organized situation codes for all incidents. All actual fire incidents had a code starting with '1', so I simply filtered out everything else.
+
+### Data processing
+After, I needed to match fire incidents to permits by address. This was a challenge since the fire incidents didn't have a standard address format. Sometimes it would end in 'Street', sometimes 'st', sometimes it would have an apartment number afterward. I ended up matching by starting with the addresses in building permit applications (which were well formatted), and checking if the street number and street name matched the first characters of the fire incident address. 
+
+I eventually geocoded the addresses in building permit applications, so I could potentially match using location. I'd expect this to be more reliable, but unfortunately, I did not have the latitude/longitude in time to try this. 
+
+I also ran into computational time issues with the matching. For every unique address (over 100,000), I needed to find the fires (out of 60,000) that happened at that location and count them, while also checking and recording if the fires happened before or after the permit's issue. I spent some time trying to solve this, but after I got the total estimated time down to below a few hours (checking how fast the first few thousand attempts ran) I decided to simply run the process on AWS EC2 and work on other things in the meantime. I imagine that I'd have to come up with a better address matching method to truly improve the speed. 
+
+On another note, trying to geocode 100,000 addresses was something of a challenge. Services like https://www.findlatitudeandlongitude.com/batch-geocode/ specifically do not want to allow that many requests. 100,000 addresses is also rather expensive with paid api's. I eventually found US Census Bureau's geocoding api, which got me my locations after running overnight on EC2.
+
+### Modeling performance
+One thing I noted earlier is that I had to use 2015 permits as my test set, in the process ignoring all the permits issued later. This was necessary to have a worthwhile test set, since we need time to really see if a fire will occur. If possible, I'd have liked even more time to see if a fire would occur, but I felt I was throwing away too much permit data. I was already losing information on building height that only exists in more recent permits. Basically, I wish I had more years of data. 
 
 ## Sources
 ### Data
