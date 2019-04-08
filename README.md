@@ -8,7 +8,9 @@ Let's see if we can predict it.
 ## Data
 Theory: we can learn a lot about a city by looking at how it has changed - namely, by looking at the building modification permits that have been issued.
 
-Much of the information in these permits can be found in the descriptions. Most machine learning algorithms 
+Much of the information in these permits can be found in the descriptions. Most machine learning algorithms require numerical vectors as input, so I converted the descriptions using Tfidf - term frequency inverse document frequency. That is, each description was converted to a numerical vector where each element is the frequency of a word in the description, weighted by how rare the word is within all the descriptions. 
+
+Word frequency is used over word counts to control for the fact that descriptions have different lengths, and the rarity scaling is meant to put priority on rare words which are more likely to differentiate descriptiosn. It's hard to conclude anything from a descrpition having the word "the", but words like "food" and "beverage" are strong indicators that the building may be a restaurant.
 
 ## Findings
 Constructed model: 
