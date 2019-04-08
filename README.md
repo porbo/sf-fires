@@ -1,24 +1,54 @@
 # San Francisco Fire Risk
 
-# Summary
-Fires are scary! 
+## Summary
+Cities are complicated. But perhaps we could get a decent picture by looking at how a city has changed - namely, by looking at the building modification permits that have been issued.
 
-Let's see if we can predict it.
+This project tries to use information from those permits to predict fire risk at addresses in San Francisco. 
 
-# Data
-Theory: we can learn a lot about a city by looking at how it has changed - namely, by looking at the building modification permits that have been issued.
+## Data
+Much of the information in these permits can be found in the descriptions. Most machine learning algorithms require numerical vectors as input, so I converted the descriptions using Tfidf - term frequency inverse document frequency. That is, each description was converted to a numerical vector where each element is the frequency of a word in the description, weighted by how rare the word is within all the descriptions. 
 
+Word frequency is used over word counts to control for the fact that descriptions have different lengths, and the rarity scaling is meant to put priority on rare words which are more likely to differentiate descriptiosn. It's hard to conclude anything from a descrpition having the word "the", but words like "food" and "beverage" are strong indicators that the building may be a restaurant.
 
-
-# Findings
+## Findings
 Constructed model: 
+![Predicted fire risk](results/predictions.png)
 
 ROC AUC: 0.796
 
 This can be interpreted as "the chance a random positive case has a higher fire risk rating than a random negative case"
 
+|Word       | 	increase 	|same 	|decrease 	|ir
+|:-----------|:--------|:----------|:---------|:-----------
+|maher 	|17946 	|18404 	|1464 	|12.258197
+|traps 	|454 	|95 	|8 	|56.750000
+|apt 	|3152 	|6321 	|759 	|4.152833
+|ref 	|12313 	|18399 	|1950 	|6.314359
+|deferred 	|441 	|655 	|69 	|6.391304
+|mep 	|3201 	|2616 	|614 	|5.213355
+|ordinance 	|5046 	|6602 	|610 	|8.272131
+|exh 	|1113 	|1421 	|326 	|3.414110
+|general 	|66271 	|313753 	|43075 	|1.538503
 
-# Future
+## Other
+Building modification descriptions can be grouped into topics.
+
+Using NMF, we can get representative words for any number of automatically created topics. In this case, 6 topics seemed to cover a variety of building modification types, without creating redundant or nonsensical topics.
+
+|Topic   |  Words                                                                | Fire risk
+|:-------|:----------------------------------------------------------------------|:-----------
+|1       | family, dwelling, reroofing, roofing, renew, report                   | .0286
+|2       | replace, new, kitchen, remodel, window, bathroom                      | .0614
+|3       | apartment, reroofing, soft, appendix, unit, chapter, retrofit, story, | .1363
+|4       | office, ref, floor, fire, sprinkler, relocate, alarm                  | .3572
+|5       | work, final, inspection, obtain, approved, complete, under, all       | .1146
+|6       | food, beverage, hndling, retail, sale, fire, sign, system, new        | .2175
+
+In this table, the fire risk is the proportion of permits classified under a given topic where a fire happened at that address after the permit was issued.
+
+The lowest fire risks were in topics 1 and 2. Based on the representative words, these are permits for homes for single families. Compared to other topics, these buildings likely have far fewer people, and thus fewer chances for someone to make a mistake.
+
+## Future
 Early data exploration indicated that the height of a building was quite helpful in predicting fire risk. Unfortunately, this was not available in my training data from before 2015. If this project were to be repeated in the future, better predictions could be attained using that data.
 
 Building permit application evaluation:
