@@ -17,7 +17,7 @@ Logistic regression was chosen for its fitting speed, allowing me to rapidly ite
 
 ![Predicted fire risk](results/predictions.png)
 
-ROC AUC: 0.796
+ROC AUC: 0.812
 
 This can be interpreted as "the chance a random positive case has a higher fire risk rating than a random negative case"
 
