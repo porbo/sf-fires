@@ -19,6 +19,8 @@ The fitting speed allowed rapid iteration through ideas.
 
 And with logistic regression, when the features have the same scale, we can look at the magnitude of coefficients as an indication of how helpful that word's prescence is in predicting fire risk. 
 
+Below is a chart of words, and the percentage of permits containing that word after which a fire occurred.
+
 | Word	| Fire Risk
 |:------|:--------
 | bart 	| 0.8118
@@ -26,14 +28,12 @@ And with logistic regression, when the features have the same scale, we can look
 | kiosk 	| 0.5946
 | hospital 	| 0.44
 | laminate 	| 0.2715
-| damage 	| 0.0741
-| aurora 	| 0.9286
-| tower 	| 0.3728
-| generator 	| 0.4038
-| hotel 	| 0.3575
-| bart 	| 0.8118
 
-The speed allowed rapid iteration through ideas, and since all my input data was scaled to be between 0 and 1, coefficients can be interpreted as how much a word increases the odds of having a fire. 
+For reference, the overall "Fire Risk" was about 13%. 
+
+As we can see, some words indicated a much higher fire risk. In general, the model seems to be good at finding places with lots of people (indicated by words like mall, hospital, bart) - after all, more people means more chance that something goes wrong.
+
+### Model performance
 
 With this model, the ROC-AUC score was 0.812
 
@@ -45,9 +45,24 @@ Here is a plot of predictions, on top of a map of San Francisco. Each point repr
 
 ![Predicted fire risk](results/predictions.png)
 
+And for reference, here is a plot of those same locations with color representing whether a fire actually happened there.
+
+![Fires](results/actual.png)
+
+The model was trained using permits and fires occuring before 2015. The plots were made using a random sample of permits issued in 2015, and fires occuring up until February 2019. 
+
+The separation of train and test data is standard to give a more accurate idea of how well the model makes true predictions about the future. The test set was chosen a few years ago so we can more accurately gauge fire risk - if we tested using permits issued in 2019, for instance, there is simply not enough time to see if a fire happened afterward.
 
 
+### Exploring increases in fire risk over time
 
+I also tried to see if there were perhaps building modifications that cause an increase in fire risk. 
+
+This was done by using the same model, but switching the target from "was there a fire here afterward?" to "did fires per year increase after the permit was issued?"
+
+Below is a table of the words with highest coefficient in that model, along with counts of permits where the fires per year increased, stayed the same, and decreased.
+
+"general" refers to the total counts, without filtering for any words.
 
 |Word       | 	increase 	|same 	|decrease 
 |:-----------|:--------|:----------|:---------
@@ -60,6 +75,8 @@ Here is a plot of predictions, on top of a map of San Francisco. Each point repr
 |ordinance 	|5046 	|6602 	|610 	
 |exh 	|1113 	|1421 	|326 	
 |general 	|66271 	|313753 	|43075 	
+
+
 
 ## Other
 Building modification descriptions can be grouped into topics.
