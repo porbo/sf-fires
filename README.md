@@ -15,13 +15,18 @@ Using those vectorized descriptions, I constructed a logistic regression model t
 
 Logistic regression was chosen for two reasons: fitting speed and interpretability. 
 
-The speed allowed rapid iteration through ideas, and since all my input data was scaled to be between 0 and 1, coefficients 
+The speed allowed rapid iteration through ideas, and since all my input data was scaled to be between 0 and 1, coefficients can be interpreted as how much a word increases the odds of having a fire. 
+
+With this model, the ROC-AUC score was 0.812
+
+This can be interpreted as "the chance a random positive case has a higher fire risk rating than a random negative case"
+
+
+Here is a plot of predictions, on top of a map of San Francisco. Each point represents a permit, and the color represents the predicted likelihood that a fire will occur at that location after the permit is issued.
+
 
 ![Predicted fire risk](results/predictions.png)
 
-ROC AUC: 0.812
-
-This can be interpreted as "the chance a random positive case has a higher fire risk rating than a random negative case"
 
 | Word	| Fire Risk
 |:------|:--------
@@ -150,3 +155,5 @@ citing nltk
 https://groups.google.com/forum/#!topic/nltk-users/CS2fCFxvu1I
 
 https://help.plot.ly/citations/
+
+https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc
