@@ -13,13 +13,34 @@ Word frequency is used over word counts to control for the fact that description
 ## Findings
 Using those vectorized descriptions, I constructed a logistic regression model to predict whether or not a fire will happen at a building.
 
-Logistic regression was chosen for its fitting speed, allowing me to rapidly iterate through ideas, and for its interpretability. 
+Logistic regression was chosen for two reasons: fitting speed and interpretability. 
+
+The speed allowed rapid iteration through ideas, and since all my input data was scaled to be between 0 and 1, coefficients 
 
 ![Predicted fire risk](results/predictions.png)
 
 ROC AUC: 0.812
 
 This can be interpreted as "the chance a random positive case has a higher fire risk rating than a random negative case"
+
+| Word	| Fire Risk
+|:------|:--------
+| bart 	| 0.8117647058823529
+| mall 	| 0.18647281921618206
+| kiosk 	| 0.5945945945945946
+| hospital 	| 0.44
+| laminate 	| 0.27149321266968324
+| damage 	| 0.07406935237123917
+| aurora 	| 0.9285714285714286
+| tower 	| 0.37277486910994767
+| generator 	| 0.40380549682875266
+| hotel 	| 0.3575
+| bart 	| 0.8117647058823529
+| mall 	| 0.18647281921618206
+| kiosk 	| 0.5945945945945946
+| hospital 	| 0.44
+| laminate 	| 0.27149321266968324
+
 
 |Word       | 	increase 	|same 	|decrease 	|ir
 |:-----------|:--------|:----------|:---------|:-----------
