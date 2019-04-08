@@ -74,4 +74,4 @@ https://scikit-learn.org/stable/about.html#citing-scikit-learn
 citing nltk
 https://groups.google.com/forum/#!topic/nltk-users/CS2fCFxvu1I
 
-https://www.datadependence.com/2016/06/creating-map-visualisations-in-python/
+https://help.plot.ly/citations/
