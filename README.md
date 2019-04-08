@@ -12,6 +12,7 @@ Theory: we can learn a lot about a city by looking at how it has changed - namel
 
 # Findings
 Constructed model: 
+![Predicted fire risk](results/predictions.png)
 
 ROC AUC: 0.796
 
