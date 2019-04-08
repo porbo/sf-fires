@@ -18,6 +18,31 @@ ROC AUC: 0.796
 
 This can be interpreted as "the chance a random positive case has a higher fire risk rating than a random negative case"
 
+|Word       | 	increase 	|same 	|decrease 	|ir
+|:-----------|:--------|:----------|:---------|:-----------
+|maher 	|17946 	|18404 	|1464 	|12.258197
+|traps 	|454 	|95 	|8 	|56.750000
+|apt 	|3152 	|6321 	|759 	|4.152833
+|ref 	|12313 	|18399 	|1950 	|6.314359
+|deferred 	|441 	|655 	|69 	|6.391304
+|mep 	|3201 	|2616 	|614 	|5.213355
+|ordinance 	|5046 	|6602 	|610 	|8.272131
+|exh 	|1113 	|1421 	|326 	|3.414110
+|general 	|66271 	|313753 	|43075 	|1.538503
+
+## Other
+Building modification descriptions can be grouped into topics.
+
+Using NMF, we can get representative words for any number of automatically created topics. In this case, 6 topics seemed to cover a variety of building modification types, without creating redundant or nonsensical topics.
+
+|Topic   |  Words
+|:-------|:----------------
+|1       | family, dwelling, reroofing, roofing, renew, report
+|2       | replace, new, kitchen, remodel, window, bathroom
+|3       | apartment, reroofing, soft, appendix, unit, chapter, retrofit, story, 
+|4       | office, ref, floor, fire, sprinkler, relocate, alarm
+|5       | work, final, inspection, obtain, approved, complete, under, all
+|6       | food, beverage, hndling, retail, sale, fire, sign, system, new
 
 ## Future
 Early data exploration indicated that the height of a building was quite helpful in predicting fire risk. Unfortunately, this was not available in my training data from before 2015. If this project were to be repeated in the future, better predictions could be attained using that data.
