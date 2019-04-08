@@ -35,14 +35,16 @@ Building modification descriptions can be grouped into topics.
 
 Using NMF, we can get representative words for any number of automatically created topics. In this case, 6 topics seemed to cover a variety of building modification types, without creating redundant or nonsensical topics.
 
-|Topic   |  Words
-|:-------|:----------------
-|1       | family, dwelling, reroofing, roofing, renew, report
-|2       | replace, new, kitchen, remodel, window, bathroom
-|3       | apartment, reroofing, soft, appendix, unit, chapter, retrofit, story, 
-|4       | office, ref, floor, fire, sprinkler, relocate, alarm
-|5       | work, final, inspection, obtain, approved, complete, under, all
-|6       | food, beverage, hndling, retail, sale, fire, sign, system, new
+|Topic   |  Words                                                                | Fire risk
+|:-------|:----------------------------------------------------------------------|:-----------
+|1       | family, dwelling, reroofing, roofing, renew, report                   | .0286
+|2       | replace, new, kitchen, remodel, window, bathroom                      | .0614
+|3       | apartment, reroofing, soft, appendix, unit, chapter, retrofit, story, | .1363
+|4       | office, ref, floor, fire, sprinkler, relocate, alarm                  | .3572
+|5       | work, final, inspection, obtain, approved, complete, under, all       | .1146
+|6       | food, beverage, hndling, retail, sale, fire, sign, system, new        | .2175
+
+Interestingly, the fire risk can vary quite a bit between topics. 
 
 ## Future
 Early data exploration indicated that the height of a building was quite helpful in predicting fire risk. Unfortunately, this was not available in my training data from before 2015. If this project were to be repeated in the future, better predictions could be attained using that data.
