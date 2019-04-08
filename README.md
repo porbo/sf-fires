@@ -11,7 +11,10 @@ Much of the information in these permits can be found in the descriptions. Most 
 Word frequency is used over word counts to control for the fact that descriptions have different lengths, and the rarity scaling is meant to put priority on rare words which are more likely to differentiate descriptiosn. It's hard to conclude anything from a descrpition having the word "the", but words like "food" and "beverage" are strong indicators that the building may be a restaurant.
 
 ## Findings
-Constructed model: 
+Using those vectorized descriptions, I constructed a logistic regression model to predict whether or not a fire will happen at a building.
+
+Logistic regression was chosen for its fitting speed, allowing me to rapidly iterate through ideas, and for its interpretability. 
+
 ![Predicted fire risk](results/predictions.png)
 
 ROC AUC: 0.796
