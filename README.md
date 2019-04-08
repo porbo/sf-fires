@@ -15,6 +15,24 @@ Using those vectorized descriptions, I constructed a logistic regression model t
 
 Logistic regression was chosen for two reasons: fitting speed and interpretability. 
 
+The fitting speed allowed rapid iteration through ideas.
+
+And with logistic regression, when the features have the same scale, we can look at the magnitude of coefficients as an indication of how helpful that word's prescence is in predicting fire risk. 
+
+| Word	| Fire Risk
+|:------|:--------
+| bart 	| 0.8118
+| mall 	| 0.1865
+| kiosk 	| 0.5946
+| hospital 	| 0.44
+| laminate 	| 0.2715
+| damage 	| 0.0741
+| aurora 	| 0.9286
+| tower 	| 0.3728
+| generator 	| 0.4038
+| hotel 	| 0.3575
+| bart 	| 0.8118
+
 The speed allowed rapid iteration through ideas, and since all my input data was scaled to be between 0 and 1, coefficients can be interpreted as how much a word increases the odds of having a fire. 
 
 With this model, the ROC-AUC score was 0.812
@@ -28,36 +46,20 @@ Here is a plot of predictions, on top of a map of San Francisco. Each point repr
 ![Predicted fire risk](results/predictions.png)
 
 
-| Word	| Fire Risk
-|:------|:--------
-| bart 	| 0.8117647058823529
-| mall 	| 0.18647281921618206
-| kiosk 	| 0.5945945945945946
-| hospital 	| 0.44
-| laminate 	| 0.27149321266968324
-| damage 	| 0.07406935237123917
-| aurora 	| 0.9285714285714286
-| tower 	| 0.37277486910994767
-| generator 	| 0.40380549682875266
-| hotel 	| 0.3575
-| bart 	| 0.8117647058823529
-| mall 	| 0.18647281921618206
-| kiosk 	| 0.5945945945945946
-| hospital 	| 0.44
-| laminate 	| 0.27149321266968324
 
 
-|Word       | 	increase 	|same 	|decrease 	|ir
-|:-----------|:--------|:----------|:---------|:-----------
-|maher 	|17946 	|18404 	|1464 	|12.258197
-|traps 	|454 	|95 	|8 	|56.750000
-|apt 	|3152 	|6321 	|759 	|4.152833
-|ref 	|12313 	|18399 	|1950 	|6.314359
-|deferred 	|441 	|655 	|69 	|6.391304
-|mep 	|3201 	|2616 	|614 	|5.213355
-|ordinance 	|5046 	|6602 	|610 	|8.272131
-|exh 	|1113 	|1421 	|326 	|3.414110
-|general 	|66271 	|313753 	|43075 	|1.538503
+
+|Word       | 	increase 	|same 	|decrease 
+|:-----------|:--------|:----------|:---------
+|maher 	|17946 	|18404 	|1464 	
+|traps 	|454 	|95 	|8 	
+|apt 	|3152 	|6321 	|759 	
+|ref 	|12313 	|18399 	|1950 	
+|deferred 	|441 	|655 	|69 	
+|mep 	|3201 	|2616 	|614 	
+|ordinance 	|5046 	|6602 	|610 	
+|exh 	|1113 	|1421 	|326 	
+|general 	|66271 	|313753 	|43075 	
 
 ## Other
 Building modification descriptions can be grouped into topics.
