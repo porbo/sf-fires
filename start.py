@@ -12,6 +12,7 @@ from src.plotting import plot_predictions
 import pickle
 import sys
 from sklearn.feature_extraction.text import TfidfVectorizer
+from collections import Counter
 
 if __name__ == '__main__':
     #let's make the text and stuff:
@@ -87,4 +88,16 @@ if __name__ == '__main__':
         locations = pickle.load(file)
     predictor['location'] = predictor['address'].apply(lambda x: locations[x])
 
+    #make plots of predicted fire risk and of actual fires happening, and save to file
     plot_predictions(predictor)
+
+    #get important words in the model based on logistic regression coefficients
+    words = Counter()
+    for word, idx in vec.vocabulary_.items():
+        words[word] = model.m1.coef_[0][idx]
+    print('Most useful word in predicting fire risk: ', words.most_common(20))
+
+    words_up = Counter()
+    for word, idx in vec.vocabulary_.items():
+        words_up[word] = model_up.m1.coef_[0][idx]
+    print('Most useful word in predicting increases in fire rate: ', words.most_common(20))
