@@ -1,16 +1,28 @@
 # San Francisco Fire Risk
 
+##### Table of Contents
+1. [Data](#data)
+2. [Findings](#findings)
+
+    i. [Model performance](#performance)
+    
+    ii. [Exploring increases in fire risk over time](#increase)
+
+3. [Other](#other)
+
+4. [Obstacles](#obstacles)
+
 ## Summary
 Cities are complicated. But perhaps we could get a decent picture by looking at how a city has changed - namely, by looking at the building modification permits that have been issued.
 
 This project tries to use information from those permits to predict fire risk at addresses in San Francisco. 
 
-## Data
+## Data <a name = 'data'></a>
 Much of the information in these permits can be found in the descriptions. Most machine learning algorithms require numerical vectors as input, so I converted the descriptions using Tfidf - term frequency inverse document frequency. That is, each description was converted to a numerical vector where each element is the frequency of a word in the description, weighted by how rare the word is within all the descriptions. 
 
 Word frequency is used over word counts to control for the fact that descriptions have different lengths, and the rarity scaling is meant to put priority on rare words which are more likely to differentiate descriptiosn. It's hard to conclude anything from a descrpition having the word "the", but words like "food" and "beverage" are strong indicators that the building may be a restaurant.
 
-## Findings
+## Findings <a name = 'findings'></a>
 Using those vectorized descriptions, I constructed a logistic regression model to predict whether or not a fire will happen at a building.
 
 Logistic regression was chosen for two reasons: fitting speed and interpretability. 
@@ -33,7 +45,7 @@ For reference, the overall "Fire Risk" was about 13%.
 
 As we can see, some words indicated a much higher fire risk. In general, the model seems to be good at finding places with lots of people (indicated by words like mall, hospital, bart) - after all, more people means more chance that something goes wrong.
 
-### Model performance
+### Model performance <a name = 'performance'></a>
 
 With this model, the ROC-AUC score was 0.812
 
@@ -54,7 +66,7 @@ The model was trained using permits and fires occuring before 2015. The plots we
 The separation of train and test data is standard to give a more accurate idea of how well the model makes true predictions about the future. The test set was chosen a few years ago so we can more accurately gauge fire risk - if we tested using permits issued in 2019, for instance, there is simply not enough time to see if a fire happened afterward.
 
 
-### Exploring increases in fire risk over time
+### Exploring increases in fire risk over time <a name = 'increase'></a>
 
 I also tried to see if there were perhaps building modifications that cause an increase in fire risk. 
 
@@ -88,7 +100,7 @@ MEP stands for Mechanical, Electrical, Plumbing
 
 One thing to note is that many of these words could help indicate the age of the building. For example, replacing p-traps is a sign that the building is old enough for them to wear out. This is interesting since building age is not readily available information.
 
-## Other
+## Other <a name = 'other'></a>
 Building modification descriptions can be grouped into topics.
 
 Using NMF, we can get representative words for any number of automatically created topics. In this case, 6 topics seemed to cover a variety of building modification types, without creating redundant or nonsensical topics.
@@ -106,10 +118,10 @@ In this table, the fire risk is the proportion of permits classified under a giv
 
 The lowest fire risks were in topics 1 and 2. Based on the representative words, these are permits for homes for single families. Compared to other topics, these buildings likely have far fewer people, and thus fewer chances for someone to make a mistake.
 
-## Future
+## Future <a name = 'future'></a>
 Early data exploration indicated that the height of a building was quite helpful in predicting fire risk. Unfortunately, this was not available in my training data from before 2015. If this project were to be repeated in the future, better predictions could be attained using that data.
 
-## Obstacles and lessons
+## Obstacles and lessons <a name = 'obstacles'></a>
 Over the course of the project, I ran into many obstacles. This space will chronicle some of them.
 
 ### Data
@@ -131,7 +143,7 @@ On another note, trying to geocode 100,000 addresses was something of a challeng
 ### Modeling performance
 One thing I noted earlier is that I had to use 2015 permits as my test set, in the process ignoring all the permits issued later. This was necessary to have a worthwhile test set, since we need time to really see if a fire will occur. If possible, I'd have liked even more time to see if a fire would occur, but I felt I was throwing away too much permit data. I was already losing information on building height that only exists in more recent permits. Basically, I wish I had more years of data. 
 
-## Sources
+## Sources 
 ### Data
 Fire Incidents: https://data.sfgov.org/Public-Safety/Fire-Incidents/wr8u-xric
 Building permit filings: https://sfdbi.org/building-permits-filed-and-issued
